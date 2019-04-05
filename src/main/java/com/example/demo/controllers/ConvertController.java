@@ -5,14 +5,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.services.ConverterService;
+import com.example.demo.services.converters.ConverterFactory.NUMBER_TYPE;
 import com.example.demo.services.converters.NotDefinedConverterException;
 
 @RestController
 public class ConvertController {
 
-    @RequestMapping("/convert/")
-    public String convert(@RequestParam(name = "type") String type, @RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
-        return new ConverterService().convert(type, number);
+    @RequestMapping("/convert/binary")
+    public String convertToBinary(@RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
+        return new ConverterService().convert(NUMBER_TYPE.BINARY.name(), number);
+    }
+
+    @RequestMapping("/convert/hexa")
+    public String convertToHexa(@RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
+        return new ConverterService().convert(NUMBER_TYPE.HEXA.name(), number);
+    }
+
+    @RequestMapping("/convert/roman")
+    public String convertToRoman(@RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
+        return new ConverterService().convert(NUMBER_TYPE.ROMAN.name(), number);
+    }
+
+    @RequestMapping("/adminPage")
+    public String adminPage(@RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
+        return new ConverterService().convert(NUMBER_TYPE.HEXA.name(), number);
     }
 
 }
