@@ -1,6 +1,6 @@
 package com.example.demo.services.converters;
 
-public class HexaConverter implements NumberConverter {
+public class HexaConverter implements Converter {
 
     private static HexaConverter instance;
 

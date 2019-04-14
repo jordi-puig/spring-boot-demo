@@ -1,6 +1,6 @@
 package com.example.demo.services.converters;
 
-public class BinaryConverter implements NumberConverter {
+public class BinaryConverter implements Converter {
 
     private static BinaryConverter instance;
 

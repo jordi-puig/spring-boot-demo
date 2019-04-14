@@ -2,7 +2,7 @@ package com.example.demo.services.converters;
 
 import java.util.TreeMap;
 
-public class RomanConverter implements NumberConverter {
+public class RomanConverter implements Converter {
 
     private static final TreeMap<Integer, String> map = new TreeMap<>();
     private static RomanConverter instance;

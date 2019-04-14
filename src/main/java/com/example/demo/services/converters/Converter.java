@@ -1,6 +1,6 @@
 package com.example.demo.services.converters;
 
-public interface NumberConverter {
+public interface Converter {
 
     public String convert(int number);
 }

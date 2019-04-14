@@ -18,7 +18,7 @@ public class ConverterFactory {
         BINARY, HEXA, ROMAN;
     }
 
-    public NumberConverter getNumberService(String type) throws NotDefinedConverterException {
+    public Converter getNumberService(String type) throws NotDefinedConverterException {
         if (type.equals(NUMBER_TYPE.BINARY.name())) return BinaryConverter.getInstance();
         if (type.equals(NUMBER_TYPE.HEXA.name())) return HexaConverter.getInstance();
         if (type.equals(NUMBER_TYPE.ROMAN.name())) return RomanConverter.getInstance();

@@ -11,6 +11,11 @@ import com.example.demo.services.converters.NotDefinedConverterException;
 @RestController
 public class ConvertController {
 
+    @RequestMapping("/restricted/")
+    public String convertToBinaryRestricted(@RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
+        return new ConverterService().convert(NUMBER_TYPE.BINARY.name(), number);
+    }
+
     @RequestMapping("/convert/binary")
     public String convertToBinary(@RequestParam(name = "number") Integer number) throws NotDefinedConverterException {
         return new ConverterService().convert(NUMBER_TYPE.BINARY.name(), number);

@@ -21,19 +21,26 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
-            .antMatchers("/convert/binary/").access("hasRole('ROLE_USER_BINARY') or hasRole('ROLE_ADMIN')")
-            .antMatchers("/convert/hexa/").access("hasRole('ROLE_USER_HEXA') or hasRole('ROLE_ADMIN')")
-            .antMatchers("/convert/roman/").access("hasRole('ROLE_USER_ROMAN') or hasRole('ROLE_ADMIN')")
+        http
+            .authorizeRequests()
+            .antMatchers("/restricted/**").fullyAuthenticated()
+            .antMatchers("/**").permitAll()
             .and()
-            .formLogin().loginPage("/loginPage")
-            .defaultSuccessUrl("/homePage")
-            .failureUrl("/loginPage?error")
-            .usernameParameter("username")
-            .passwordParameter("password")
-            .and()
-            .logout().logoutSuccessUrl("/loginPage?logout");
+            .exceptionHandling().accessDeniedPage("/403");
+
+        // http.authorizeRequests()
+        // .antMatchers("/adminPage").access("hasRole('ROLE_ADMIN')")
+        // .antMatchers("/convert/binary/").access("hasRole('ROLE_USER_BINARY') or hasRole('ROLE_ADMIN')")
+        // .antMatchers("/convert/hexa/").access("hasRole('ROLE_USER_HEXA') or hasRole('ROLE_ADMIN')")
+        // .antMatchers("/convert/roman/").access("hasRole('ROLE_USER_ROMAN') or hasRole('ROLE_ADMIN')")
+        // .and()
+        // .formLogin().loginPage("/loginPage")
+        // .defaultSuccessUrl("/homePage")
+        // .failureUrl("/loginPage?error")
+        // .usernameParameter("username")
+        // .passwordParameter("password")
+        // .and()
+        // .logout().logoutSuccessUrl("/loginPage?logout");
 
     }
 }
